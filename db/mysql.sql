@@ -1,0 +1,17 @@
+-- phpMyAdmin SQL Dump
+-- version 4.0.10.18
+-- https://www.phpmyadmin.net
+--
+-- 生成日時: 2017 年 11 月 29 日 11:34
+-- サーバのバージョン: 5.6.23-log
+-- PHP のバージョン: 5.3.3
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+

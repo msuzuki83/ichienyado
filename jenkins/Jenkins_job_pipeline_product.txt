@@ -1,0 +1,29 @@
+// ==================================================
+// Jenkins Job Pipeline (product)
+// masterのソースを本番環境にデプロイ
+// (下記例ではノード名をproductとしています)
+// ==================================================
+
+node("product")
+{
+    stage("product deploy!")
+    {
+        try {
+            deleteDir()
+        } catch (Exception e) {}
+        try {
+            sh "sudo docker rm \$(docker container ls -aq)"
+        } catch (Exception e) {}
+        try {
+            sh "docker rmi \$(docker images -aq)"
+        } catch (Exception e) {}
+        sh "sudo rm -fr ichienyado"
+        sh "sudo git clone https://msuzuki83:xxxxxx@github.com/msuzuki83/ichienyado.git"
+        sh "sudo cp ichienyado/docker/docker-compose.yml ."
+        sh "sudo cp ichienyado/docker/Dockerfile_product ."
+        sh "sudo mv Dockerfile_product Dockerfile"
+        sh "sudo /usr/local/bin/docker-compose build --no-cache"
+        sh "sudo /usr/local/bin/docker-compose up -d"
+        sh "sudo sh ichienyado/unit_test/unit_test_product.sh"
+    }
+}

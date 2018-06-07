@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  livecms:
+    build:
+      context: .
+      dockerfile: Dockerfile_local
+    ports:
+      - "80:80"
+    volumes:
+      - ${LIVECMS_VOLUME_PATH}:/etc/sbt/ichienyado:z
