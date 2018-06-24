@@ -1,8 +1,5 @@
----
 
 *ichienyadoローカル開発手順*
-
----
 
 ## 必要なもの
 
@@ -57,7 +54,7 @@ sudo docker-compose up -d
 sudo docker ps  
 
 (2) Dockerコンテナにログインします。  
-sudo docker exec -it {CONTAINER ID} /bin/bash  
+sudo docker exec -it {(1)で確認したCONTAINER ID} /bin/bash  
 
 (3) Dockerコンテナに入ったら、Webアプリに移動します。  
 cd /etc/sbt/ichienyado/webapp/  
