@@ -6,7 +6,7 @@
 
 
 
-  
+
 ---
 
 *ichienyadoローカル開発手順*
@@ -42,7 +42,7 @@ cd ichienyado/local
 ＊ ローカル開発環境のみ、ソースコードをHostと共有しています。  
 
 （例）  
-ichienyado_VOLUME_PATH=/Users/username/github/ichienyado  
+ICHIENYADO_VOLUME_PATH=/Users/username/github/ichienyado
 
 ---  
 
