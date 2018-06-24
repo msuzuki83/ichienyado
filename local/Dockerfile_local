@@ -16,7 +16,8 @@ RUN yum install sbt -y
 
 RUN cd /etc/sbt && git clone -b develop https://github.com/msuzuki83/ichienyado.git
 
-RUN cd /etc/sbt/ichienyado/webapp/ && sbt run
+#WORKDIR /etc/sbt/ichienyado/webapp
+#ENTRYPOINT ["sbt", "start"]
 
 WORKDIR /root
 ENTRYPOINT ["/bin/sh", "-c", "while true; do echo hello world; sleep 1; done"]
