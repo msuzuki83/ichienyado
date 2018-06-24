@@ -1,17 +1,5 @@
 
-
-＜＜＜＜＜準備中＞＞＞＞＞
-
-
-
-
-
-  
----
-
 *ichienyadoローカル開発手順*
-
----
 
 ## 必要なもの
 
@@ -42,7 +30,7 @@ cd ichienyado/local
 ＊ ローカル開発環境のみ、ソースコードをHostと共有しています。  
 
 （例）  
-ichienyado_VOLUME_PATH=/Users/username/github/ichienyado  
+ICHIENYADO_VOLUME_PATH=/Users/username/github/ichienyado
 
 ---  
 
@@ -60,6 +48,22 @@ sudo docker-compose up -d
 
 ---
 
-## 6. 手順5で起動したWebサーバに、ブラウザからアクセスします。
+## 6. Dockerコンテナにログインして、サーバを起動します。
 
-http://localhost:9000  
+(1) Dockerのプロセスを確認して CONTAINER ID を確認します。  
+sudo docker ps  
+
+(2) Dockerコンテナにログインします。  
+sudo docker exec -it {(1)で確認したCONTAINER ID} /bin/bash  
+
+(3) Dockerコンテナに入ったら、Webアプリに移動します。  
+cd /etc/sbt/ichienyado/webapp/  
+
+(4) 開発モードのWebサーバを起動します（起動まで時間がかかります。Ctrl+Cで停止します）。  
+sbt run  
+
+---
+
+## 7. 手順6で起動したWebサーバに、ブラウザからアクセスします。
+
+http://localhost

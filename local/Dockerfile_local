@@ -1,18 +1,23 @@
-FROM amazonlinux:2017.09.0.20170930
+FROM centos:centos7
 
-# init
 RUN yum update -y
 
-# install
-RUN yum install --enablerepo=epel -y mysql56-server git wget
+RUN yum install -y git wget java-1.8.0-openjdk.x86_64 java-1.8.0-openjdk-devel.x86_64
 
-# settings
-RUN chown -R apache:apache /var/www
-RUN chmod 2775 /var/www
-RUN find /var/www -type d -exec chmod 2775 {} \;
-RUN find /var/www -type f -exec chmod 0664 {} \;
-RUN echo "NETWORKING=yes" >/etc/sysconfig/network
-RUN sed -i -e "151s/None/All/" /etc/httpd/conf/httpd.conf
+RUN wget http://downloads.typesafe.com/scala/2.11.7/scala-2.11.7.tgz
+RUN tar -xzvf scala-2.11.7.tgz
+RUN rm -rf scala-2.11.7.tgz
+RUN echo "export SCALA_HOME=/home/ec2-user/scala-2.11.7" >> ~/.bashrc
+RUN echo "export PATH=$PATH:/home/ec2-user/scala-2.11.7/bin" >> ~/.bashrc
+RUN source ~/.bashrc
 
-# start
-CMD ["/usr/bin/supervisord", "-n"]
+RUN curl https://bintray.com/sbt/rpm/rpm | tee /etc/yum.repos.d/bintray-sbt-rpm.repo
+RUN yum install sbt -y
+
+RUN cd /etc/sbt && git clone -b develop https://github.com/msuzuki83/ichienyado.git
+
+#WORKDIR /etc/sbt/ichienyado/webapp
+#ENTRYPOINT ["sbt", "start"]
+
+WORKDIR /root
+ENTRYPOINT ["/bin/sh", "-c", "while true; do echo hello world; sleep 1; done"]
