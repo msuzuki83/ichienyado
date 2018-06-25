@@ -60,7 +60,12 @@ sudo docker exec -it {(1)で確認したCONTAINER ID} /bin/bash
 cd /etc/sbt/ichienyado/webapp/  
 
 (4) 開発モードのWebサーバを起動します（起動まで時間がかかります。Ctrl+Cで停止します）。  
+開発モードのWebサーバを起動
 sbt run  
+
+通常のサーバを起動する場合は sbt start/stop を使ってください（Ctrl+Dでバックグランドに移動できます）  
+強制終了する場合は、下記ファイルにpidが記載されているので、kill {pid} して、下記ファイルを削除してください。  
+/usr/share/sbt/conf/ichienyado/webapp/target/universal/stage/RUNNING_PID  
 
 ---
 
