@@ -15,11 +15,7 @@ object Parse extends OptionParse {
         val parse: MVCOption[String] = params.get("mode") match {
             case Some( mode ) => MVCSome[String]( mode.Select.From.Where.OrderBy.build )
             case None         => MVCSome[String]( home.Select.From.Where.OrderBy.build )
-            case _            => MVCSome[String]( home.Select.From.Where.OrderBy.build )
         }
-
-        // DEBUG:
-        println(parse)
 
         parse
     }
@@ -47,10 +43,10 @@ object Parse extends OptionParse {
 
         def Where : Query = {
             val query: Query = mode match {
-                case "home" => new Query(mode, sql + "where id=1 ")
-                case "list" => new Query(mode, sql + "where id=2 ")
-                case "info" => new Query(mode, sql + "where id=3 ")
-                case _      => new Query(mode, sql + "where id=1 ")
+                case "home" => new Query(mode, sql + " ")
+                case "list" => new Query(mode, sql + "where area=`tokyo` ")
+                case "info" => new Query(mode, sql + "where id=`0001` ")
+                case _      => new Query(mode, sql + " ")
             }
             query
         }
@@ -59,7 +55,7 @@ object Parse extends OptionParse {
             val query: Query = mode match {
                 case "home" => new Query(mode, sql + "order by id ")
                 case "list" => new Query(mode, sql + "order by id ")
-                case "info" => new Query(mode, sql + "order by id ")
+                case "info" => new Query(mode, sql + " ")
                 case _      => new Query(mode, sql + "order by id ")
             }
             query
@@ -70,7 +66,7 @@ object Parse extends OptionParse {
         }
     }
 
-    protected implicit def string2Query (str : String) : Query = {
+    protected implicit def string2query (str : String) : Query = {
         val query = Query.apply(str)
         query
     }

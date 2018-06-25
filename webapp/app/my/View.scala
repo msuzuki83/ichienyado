@@ -14,8 +14,21 @@ object View extends OptionView {
         views.html.index(html)
     }
 
-    protected def json2html(model: String) : String = {
-        val html = "<h1>" + model + "<h1>"
+    protected def json2html(json: String) : String = {
+      val l = Json(json).parse.list
+
+        var html = ""
+        html += (s"<h1>$json</h1>")
+        html += "<table border=1>"
+        l.foreach { i =>
+          html += "<tr>"
+          i.foreach { j =>
+            html += (s"<td>$j</td>")
+          }
+          html += "</tr>"
+        }
+        html += "</table>"
+
         html
     }
 }

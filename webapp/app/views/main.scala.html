@@ -7,7 +7,7 @@
 @(title: String)(content: Html)
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
     <head>
         @* Here's where we render the page title `String`. *@
         <title>@title</title>
@@ -16,6 +16,10 @@
 
     </head>
     <body>
+
+        <a href="/">ホーム</a> | <a href="/?mode=list">エリアで絞り込む（東京エリア）</a> | <a href="/?mode=info">本日のオススメ</a> | <a href="https://matome.naver.jp/odai/2136150053844609201/2136150132544794403" target="_blank">旧サイト</a>
+        <hr>
+
         @* And here's where we render the `Html` object containing
          * the page content. *@
         @content

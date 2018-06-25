@@ -14,9 +14,8 @@ object Model extends OptionModel {
         model
     }
 
-    protected def query2json(query: String) : String = {
-        val json = "{'hoge':'hoge'}"
-
+    protected def query2json(sql: String) : String = {
+        val json = DB(sql).execute.json
         json
     }
 }
