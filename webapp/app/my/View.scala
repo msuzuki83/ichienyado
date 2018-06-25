@@ -18,7 +18,7 @@ object View extends OptionView {
       val l = Json(json).parse.list
 
         var html = ""
-        html += (s"<h1>$json</h1>")
+        html += (s"<h2>DEBUG: $json</h2>")
         html += "<table border=1>"
         l.foreach { i =>
           html += "<tr>"
