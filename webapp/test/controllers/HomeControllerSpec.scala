@@ -13,6 +13,12 @@ import play.api.test.Helpers._
  */
 class HomeControllerSpec extends PlaySpec with GuiceOneAppPerTest with Injecting {
 
+	// TODO:
+	// case01
+	// case02
+	// case03
+	// case04
+
   "HomeController GET" should {
 
     "render the index page from a new instance of controller" in {

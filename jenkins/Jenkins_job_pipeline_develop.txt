@@ -18,7 +18,7 @@ node("develop")
             sh "docker rmi \$(docker images -aq)"
         } catch (Exception e) {}
         sh "sudo rm -fr ichienyado"
-        sh "sudo git clone -b develop https://msuzuki83:xxxxxx@github.com/msuzuki83/ichienyado.git"
+        sh "sudo git clone -b develop https://github.com/msuzuki83/ichienyado.git"
         sh "sudo cp ichienyado/docker/docker-compose.yml ."
         sh "sudo cp ichienyado/docker/Dockerfile_develop ."
         sh "sudo mv Dockerfile_develop Dockerfile"
