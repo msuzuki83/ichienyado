@@ -23,40 +23,40 @@ object Parse extends OptionParse {
     sealed protected case class Query(mode: String, sql: String = "") {
         def Select : Query = {
             val query: Query = mode match {
-                case "home" => new Query(mode, "select * ")
-                case "list" => new Query(mode, "select * ")
-                case "info" => new Query(mode, "select * ")
-                case _      => new Query(mode, "select * ")
+                case "home" => Query.apply(mode, "select * ")
+                case "list" => Query.apply(mode, "select * ")
+                case "info" => Query.apply(mode, "select * ")
+                case _      => Query.apply(mode, "select * ")
             }
             query
         }
 
         def From : Query = {
             val query: Query = mode match {
-                case "home" => new Query(mode, sql + "from home ")
-                case "list" => new Query(mode, sql + "from list ")
-                case "info" => new Query(mode, sql + "from info ")
-                case _      => new Query(mode, sql + "from home ")
+                case "home" => Query.apply(mode, sql + "from home ")
+                case "list" => Query.apply(mode, sql + "from list ")
+                case "info" => Query.apply(mode, sql + "from info ")
+                case _      => Query.apply(mode, sql + "from home ")
             }
             query
         }
 
         def Where : Query = {
             val query: Query = mode match {
-                case "home" => new Query(mode, sql + " ")
-                case "list" => new Query(mode, sql + "where area=`tokyo` ")
-                case "info" => new Query(mode, sql + "where id=`0001` ")
-                case _      => new Query(mode, sql + " ")
+                case "home" => Query.apply(mode, sql + " ")
+                case "list" => Query.apply(mode, sql + "where area=`tokyo` ")
+                case "info" => Query.apply(mode, sql + "where id=`0001` ")
+                case _      => Query.apply(mode, sql + " ")
             }
             query
         }
 
         def OrderBy : Query = {
             val query: Query = mode match {
-                case "home" => new Query(mode, sql + "order by id ")
-                case "list" => new Query(mode, sql + "order by id ")
-                case "info" => new Query(mode, sql + " ")
-                case _      => new Query(mode, sql + "order by id ")
+                case "home" => Query.apply(mode, sql + "order by id ")
+                case "list" => Query.apply(mode, sql + "order by id ")
+                case "info" => Query.apply(mode, sql + " ")
+                case _      => Query.apply(mode, sql + "order by id ")
             }
             query
         }
